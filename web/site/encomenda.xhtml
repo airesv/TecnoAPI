@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head />
+    <body>
+        <ui:composition>
+            <div class="panel panel-default">
+                <div class="panel-heading">Encomenda Atual</div>
+
+
+                <h:dataTable class="table table-bordered table-hover" value="#{sessaoController.encomenda}" var="item">
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Marca"/>
+                        </f:facet>
+                        <h:commandLink  value="#{item.brand}"/>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Modelo"/>
+                        </f:facet>
+                        <h:commandLink  value="#{item.model}"/>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Qtd"/>
+                        </f:facet>
+                        <h:commandLink  value="#{item.quantity}"/>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Preco"/>
+                        </f:facet>
+                        <h:commandLink  value="#{item.price}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Remover"/>
+                        </f:facet>
+                        <h:commandLink  class="glyphicon glyphicon-minus-sign" value="#{sessaoController.remove(item)}"/>
+                    </h:column>
+                </h:dataTable>
+            </div>
+        </ui:composition>
+    </body>
+</html>
+

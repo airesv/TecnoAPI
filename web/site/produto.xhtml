@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+        <script src="../resources/js/bootstrap-modal.js"></script>
+
+    </h:head>
+    <body>
+        <ui:composition>
+            <div class="panel panel-default">
+                <div class="panel-heading">Produtos disponiveis</div>
+
+                <h:dataTable class="table table-bordered table-hover" value="#{tecnoController.products}" var="item">
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Marca"/>
+                        </f:facet>
+                        <h:commandLink  value="#{item.brand}" />
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Modelo"/>
+                        </f:facet>
+                        <h:commandLink  value="#{item.model}"/>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Stock"/>
+                        </f:facet>
+                        <h:commandLink  value="#{item.quantity}"/>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Preco"/>
+                        </f:facet>
+                        <h:commandLink  value="#{item.price}" onclick="if (!confirm('Encomendar?'))
+                                    return false" action="#{sessaoController.insert(item)}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Qtd"/>
+                        </f:facet>
+                        <h:inputText value="#{item.quantity}" size="1"/>
+                        <h:commandLink  class="glyphicon glyphicon-plus-sign" onclick="if (!confirm('Encomendar?'))
+                                    return false" action="#{sessaoController.insert(item)}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="info"/>
+                        </f:facet>
+
+                        <h:commandLink  class="glyphicon glyphicon-info-sign"  onclick="$('#myModal').modal('show');">
+                            <f:ajax event="click" listener="#{tecnoController.gerarInfo(item)}" render="dialogo"/>
+                        </h:commandLink>
+                        <h:form id="dialogo">
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            <h4 class="modal-title"><h:outputText value="#{tecnoController.name}"/></h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            // AQUI TENHO OS CAMPOS DO FORM
+                                        </div>
+                                        <div class="modal-footer">
+                                            // AQUI TENHO OS BOTÕES DO FORM
+                                        </div>
+                                    </div><!-- /.modal-content -->
+                                </div><!-- /.modal-dialog -->
+                            </div><!-- /.modal -->
+                        </h:form>
+
+
+                    </h:column>
+
+
+
+                </h:dataTable>
+            </div>
+        </ui:composition>
+    </body>
+</html>
+
