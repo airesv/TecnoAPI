@@ -8,7 +8,6 @@
 package objetEntities;
 
 import java.util.Date;
-import org.primefaces.event.CellEditEvent;
 
 /**
  *
@@ -41,12 +40,6 @@ public class Product {
         this.version = version;
         this.idCategory = idCategory;
         this.qtyBuy = 0;
-    }
-
-    public void onCellEdit(CellEditEvent event) {
-        Object oldValue = event.getOldValue();
-        Object newValue = event.getNewValue();
-
     }
 
     /**
