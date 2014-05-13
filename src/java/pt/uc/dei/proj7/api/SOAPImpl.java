@@ -27,11 +27,22 @@ public class SOAPImpl implements APInterface {
         port = service.getSOAPPort();
     }
 
+    /**
+     * Procura todos os Produtos da Aplicacao
+     *
+     * @return Lista de produtos
+     */
     @Override
     public List<Product> findAllProducts() {
         return ProductConverter.converterProductorList(port.findAllProducts());
     }
 
+    /**
+     * Procura todos os Produtos da Aplicacao de uma determinda categoria
+     *
+     * @param arg0 Long, correspone à Pk da Caterogira
+     * @return
+     */
     @Override
     public List<Product> findProductByCategory(java.lang.Long arg0) {
         return ProductConverter.converterProductorList(port.findProductByCategory(arg0));

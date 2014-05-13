@@ -13,12 +13,11 @@
 
                     <ul class="list-group">
 
-                        <ui:repeat value="#{tecnoController.categories}" var="categoria">
+                        <ui:repeat value="#{tecnoController.categories}" var="item">
                             <li  class="list-group-item">
-                                <h:commandLink value="#{categoria.category}"/>
+                                <h:commandLink value="#{item.category}" action="#{tecnoController.selectByCategoria(item)}"/>
                             </li>
                         </ui:repeat>
-
 
 
 
