@@ -5,13 +5,10 @@
  */
 package pt.uc.dei.proj7.api;
 
-import java.util.HashMap;
 import java.util.List;
 import javax.persistence.NoResultException;
 import objetEntities.Category;
 import objetEntities.Product;
-import pt.uc.aor.webservice.api.Sell;
-import pt.uc.aor.webservice.api.SellProduct;
 
 /**
  *
@@ -33,21 +30,19 @@ public interface APInterface {
     public List<Category> findAllCategory() throws NoResultException;
 
 //Métodos da entidade Sell:
-    public void makeSell(HashMap<Integer, Integer> hashmap, String apkKey);
-
-    public void removeSell(long id, String apkKey);
-
-    public List<Sell> sellsByUser(Long idUser) throws NoResultException;
-
-    public List<SellProduct> detailBySell(Long idSell) throws NoResultException;
-
+//    public void makeSell(HashMap<Integer, Integer> hashmap, String apkKey);
+//
+//    public void removeSell(long id, String apkKey);
+//
+//    public List<Sell> sellsByUser(Long idUser) throws NoResultException;
+//
+//    public List<SellProduct> detailBySell(Long idSell) throws NoResultException;
 //Métodos da entidade SellProduct:
-    public void addProductSell(long idProduct, long idSell, String apkKey, int quantity);
-
-    public void editProductSell(long idProduct, long idSell, String apkKey, int quantity);
-
-    public void removeProductSell(long idProduct, long idSell, String apkKey);
-
-    public List<SellProduct> detailSell(Long idSell) throws NoResultException;
-
+//    public void addProductSell(long idProduct, long idSell, String apkKey, int quantity);
+//
+//    public void editProductSell(long idProduct, long idSell, String apkKey, int quantity);
+//
+//    public void removeProductSell(long idProduct, long idSell, String apkKey);
+//
+//    public List<SellProduct> detailSell(Long idSell) throws NoResultException;
 }

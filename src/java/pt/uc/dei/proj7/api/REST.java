@@ -5,7 +5,6 @@
  */
 package pt.uc.dei.proj7.api;
 
-import java.util.HashMap;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.persistence.NoResultException;
@@ -69,37 +68,36 @@ public class REST implements APInterface {
     }
 
 //Métodos da entidade Sell:
-    public void makeSell(HashMap<Integer, Integer> hashmap, String apkKey) {
-        makeSell(hashmap, apkKey);
-    }
-
-    public void removeSell(long id, String apkKey) {
-        removeSell(id, apkKey);
-    }
-
-    public List<Sell> sellsByUser(Long idUser) throws NoResultException {
-        return sellsByUser(idUser);
-    }
-
-    public List<SellProduct> detailBySell(Long idSell) throws NoResultException {
-        return detailBySell(idSell);
-    }
-
-//Métodos da entidade SellProduct:
-    public void addProductSell(long idProduct, long idSell, String apkKey, int quantity) {
-        addProductSell(idProduct, idSell, apkKey, quantity);
-    }
-
-    public void editProductSell(long idProduct, long idSell, String apkKey, int quantity) {
-        editProductSell(idProduct, idSell, apkKey, quantity);
-    }
-
-    public void removeProductSell(long idProduct, long idSell, String apkKey) {
-        removeProductSell(idProduct, idSell, apkKey);
-    }
-
-    public List<SellProduct> detailSell(Long idSell) throws NoResultException {
-        return detailSell(idSell);
-    }
-
+//    public void makeSell(HashMap<Integer, Integer> hashmap, String apkKey) {
+//        makeSell(hashmap, apkKey);
+//    }
+//
+//    public void removeSell(long id, String apkKey) {
+//        removeSell(id, apkKey);
+//    }
+//
+//    public List<Sell> sellsByUser(Long idUser) throws NoResultException {
+//        return sellsByUser(idUser);
+//    }
+//
+//    public List<SellProduct> detailBySell(Long idSell) throws NoResultException {
+//        return detailBySell(idSell);
+//    }
+//
+////Métodos da entidade SellProduct:
+//    public void addProductSell(long idProduct, long idSell, String apkKey, int quantity) {
+//        addProductSell(idProduct, idSell, apkKey, quantity);
+//    }
+//
+//    public void editProductSell(long idProduct, long idSell, String apkKey, int quantity) {
+//        editProductSell(idProduct, idSell, apkKey, quantity);
+//    }
+//
+//    public void removeProductSell(long idProduct, long idSell, String apkKey) {
+//        removeProductSell(idProduct, idSell, apkKey);
+//    }
+//
+//    public List<SellProduct> detailSell(Long idSell) throws NoResultException {
+//        return detailSell(idSell);
+//    }
 }

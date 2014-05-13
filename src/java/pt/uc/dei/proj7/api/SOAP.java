@@ -5,7 +5,6 @@
  */
 package pt.uc.dei.proj7.api;
 
-import java.util.HashMap;
 import java.util.List;
 import javax.xml.ws.WebServiceRef;
 import objetEntities.Category;
@@ -111,9 +110,8 @@ public class SOAP implements APInterface {
         return port.sellsByUser(arg0);
     }
 
-    @Override
-    public void makeSell(HashMap<Integer, Integer> hashmap, String apkKey) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
+//    @Override
+//    public void makeSell(HashMap<Integer, Integer> hashmap, String apkKey) {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//    }
 }

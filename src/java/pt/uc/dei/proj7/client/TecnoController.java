@@ -15,6 +15,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import objetEntities.Category;
 import objetEntities.Product;
+import pt.uc.dei.proj7.api.APInterface;
 
 /**
  *
@@ -26,6 +27,8 @@ public class TecnoController implements Serializable {
 
     @Inject
     private SessaoController sessao;
+
+    private APInterface api;
 
     private List<Category> categories;
 
@@ -54,17 +57,18 @@ public class TecnoController implements Serializable {
     }
 
     public void gerarCategories() {
-        for (int i = 0; i < 3; i++) {
-            Category cat = new Category(i, "Category" + i);
-            categories.add(cat);
+        if (sessao.getIsSoap().equals(true)) {
+            categories = api.findAllCategory();
+        } else {
+            categories = api.findAllCategory();
         }
     }
 
     public void gerarProdutos() {
         products = new ArrayList<>();
         for (int i = 0; i < 12; i++) {
-            Product prod = new Product(i, "brand" + i, "descrip" + i, "i", i * 10.5, i, null, "1", i % 2);
-            products.add(prod);
+            //  Product prod = new Product(0, "brand" + i, "descrip" + i, "i", i * 10.5, i, null, "1", i % 2);
+//            products.add(prod);
         }
 
     }
@@ -77,14 +81,7 @@ public class TecnoController implements Serializable {
      * @return the categories
      */
     public List<Category> getCategories() {
-        categories = new ArrayList<>();
-        Category cat1 = new Category(1, "Category" + 1);
-        categories.add(cat1);
-        Category cat2 = new Category(2, "Category" + 2);
-        categories.add(cat2);
-        Category cat3 = new Category(3, "Category" + 3);
-        categories.add(cat3);
-
+        gerarCategories();
         return categories;
     }
 
