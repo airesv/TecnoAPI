@@ -7,6 +7,7 @@ package pt.uc.dei.proj7.api;
 
 import java.util.List;
 import javax.persistence.NoResultException;
+import javax.ws.rs.ClientErrorException;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
@@ -43,12 +44,28 @@ public class RESTImpl implements APInterface {
         return result;
     }
 
-    public List<Product> findProductByCategory(Long idCategory) throws NoResultException {
-        return findProductByCategory(idCategory);
+    public List<Product> findProductByCategory(Long idCategory) throws NoResultException, ClientErrorException {
+        WebTarget webTargetProduct = webTarget.path("product");
+        List<Product> result;
+        result = webTargetProduct
+                .path(java.text.MessageFormat.format("category/{0}", new Object[]{idCategory}))
+                .request(javax.ws.rs.core.MediaType.APPLICATION_JSON)
+                .get(new GenericType<List<Product>>() {
+                });
+        client.close();
+        return result;
     }
 
     public List<Product> searchByProduct(String column, String word) throws NoResultException {
-        return searchByProduct(column, word);
+        WebTarget webTargetProduct = webTarget.path("product");
+        List<Product> result;
+        result = webTargetProduct
+                .path(java.text.MessageFormat.format("search/{0}/{1}", new Object[]{column, word}))
+                .request(javax.ws.rs.core.MediaType.APPLICATION_JSON)
+                .get(new GenericType<List<Product>>() {
+                });
+        client.close();
+        return result;
     }
 
     public Product findProductById(Long id) throws NoResultException {
@@ -66,6 +83,7 @@ public class RESTImpl implements APInterface {
                 .request(MediaType.APPLICATION_JSON)
                 .get(new GenericType<List<Category>>() {
                 });
+        client.close();
         return result;
     }
 

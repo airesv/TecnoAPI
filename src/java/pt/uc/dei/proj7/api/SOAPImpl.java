@@ -69,62 +69,35 @@ public class SOAPImpl implements APInterface {
     }
 
     public void addProductSell(long arg0, long arg1, java.lang.String arg2, int arg3) {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
         port.addProductSell(arg0, arg1, arg2, arg3);
     }
 
     public java.util.List<pt.uc.aor.webservice.api.SellProduct> detailBySell(java.lang.Long arg0) {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        pt.uc.aor.webservice.api.SOAP port = service.getSOAPPort();
         return port.detailBySell(arg0);
     }
 
     public java.util.List<pt.uc.aor.webservice.api.SellProduct> detailSell(java.lang.Long arg0) {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        pt.uc.aor.webservice.api.SOAP port = service.getSOAPPort();
         return port.detailSell(arg0);
     }
 
     public void editProductSell(long arg0, long arg1, java.lang.String arg2, int arg3) {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        pt.uc.aor.webservice.api.SOAP port = service.getSOAPPort();
         port.editProductSell(arg0, arg1, arg2, arg3);
     }
 
     public void makeSell(pt.uc.aor.webservice.api.MakeSell.Arg0 arg0, java.lang.String arg1) {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        pt.uc.aor.webservice.api.SOAP port = service.getSOAPPort();
         port.makeSell(arg0, arg1);
     }
 
     public void removeProductSell(long arg0, long arg1, java.lang.String arg2) {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        pt.uc.aor.webservice.api.SOAP port = service.getSOAPPort();
         port.removeProductSell(arg0, arg1, arg2);
     }
 
     public void removeSell(long arg0, java.lang.String arg1) {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        pt.uc.aor.webservice.api.SOAP port = service.getSOAPPort();
         port.removeSell(arg0, arg1);
     }
 
     public java.util.List<pt.uc.aor.webservice.api.Sell> sellsByUser(java.lang.Long arg0) {
-        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
-        // If the calling of port operations may lead to race condition some synchronization is required.
-        pt.uc.aor.webservice.api.SOAP port = service.getSOAPPort();
         return port.sellsByUser(arg0);
     }
 
-//    @Override
-//    public void makeSell(HashMap<Integer, Integer> hashmap, String apkKey) {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-//    }
 }

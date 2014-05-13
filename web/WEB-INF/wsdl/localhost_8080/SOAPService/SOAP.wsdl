@@ -4,29 +4,11 @@
 <xsd:import namespace="http://API.webservice.aor.uc.pt/" schemaLocation="http://localhost:8080/SOAPService/SOAP?xsd=1"/>
 </xsd:schema>
 </types>
-<message name="findAllCategory">
-<part name="parameters" element="tns:findAllCategory"/>
+<message name="findProductByDesignation">
+<part name="parameters" element="tns:findProductByDesignation"/>
 </message>
-<message name="findAllCategoryResponse">
-<part name="parameters" element="tns:findAllCategoryResponse"/>
-</message>
-<message name="addProductSell">
-<part name="parameters" element="tns:addProductSell"/>
-</message>
-<message name="addProductSellResponse">
-<part name="parameters" element="tns:addProductSellResponse"/>
-</message>
-<message name="editProductSell">
-<part name="parameters" element="tns:editProductSell"/>
-</message>
-<message name="editProductSellResponse">
-<part name="parameters" element="tns:editProductSellResponse"/>
-</message>
-<message name="removeProductSell">
-<part name="parameters" element="tns:removeProductSell"/>
-</message>
-<message name="removeProductSellResponse">
-<part name="parameters" element="tns:removeProductSellResponse"/>
+<message name="findProductByDesignationResponse">
+<part name="parameters" element="tns:findProductByDesignationResponse"/>
 </message>
 <message name="removeSell">
 <part name="parameters" element="tns:removeSell"/>
@@ -82,28 +64,34 @@
 <message name="findProductByIdResponse">
 <part name="parameters" element="tns:findProductByIdResponse"/>
 </message>
-<message name="findProductByDesignation">
-<part name="parameters" element="tns:findProductByDesignation"/>
+<message name="findAllCategory">
+<part name="parameters" element="tns:findAllCategory"/>
 </message>
-<message name="findProductByDesignationResponse">
-<part name="parameters" element="tns:findProductByDesignationResponse"/>
+<message name="findAllCategoryResponse">
+<part name="parameters" element="tns:findAllCategoryResponse"/>
+</message>
+<message name="addProductSell">
+<part name="parameters" element="tns:addProductSell"/>
+</message>
+<message name="addProductSellResponse">
+<part name="parameters" element="tns:addProductSellResponse"/>
+</message>
+<message name="editProductSell">
+<part name="parameters" element="tns:editProductSell"/>
+</message>
+<message name="editProductSellResponse">
+<part name="parameters" element="tns:editProductSellResponse"/>
+</message>
+<message name="removeProductSell">
+<part name="parameters" element="tns:removeProductSell"/>
+</message>
+<message name="removeProductSellResponse">
+<part name="parameters" element="tns:removeProductSellResponse"/>
 </message>
 <portType name="SOAP">
-<operation name="findAllCategory">
-<input wsam:Action="http://API.webservice.aor.uc.pt/SOAP/findAllCategoryRequest" message="tns:findAllCategory"/>
-<output wsam:Action="http://API.webservice.aor.uc.pt/SOAP/findAllCategoryResponse" message="tns:findAllCategoryResponse"/>
-</operation>
-<operation name="addProductSell">
-<input wsam:Action="http://API.webservice.aor.uc.pt/SOAP/addProductSellRequest" message="tns:addProductSell"/>
-<output wsam:Action="http://API.webservice.aor.uc.pt/SOAP/addProductSellResponse" message="tns:addProductSellResponse"/>
-</operation>
-<operation name="editProductSell">
-<input wsam:Action="http://API.webservice.aor.uc.pt/SOAP/editProductSellRequest" message="tns:editProductSell"/>
-<output wsam:Action="http://API.webservice.aor.uc.pt/SOAP/editProductSellResponse" message="tns:editProductSellResponse"/>
-</operation>
-<operation name="removeProductSell">
-<input wsam:Action="http://API.webservice.aor.uc.pt/SOAP/removeProductSellRequest" message="tns:removeProductSell"/>
-<output wsam:Action="http://API.webservice.aor.uc.pt/SOAP/removeProductSellResponse" message="tns:removeProductSellResponse"/>
+<operation name="findProductByDesignation">
+<input wsam:Action="http://API.webservice.aor.uc.pt/SOAP/findProductByDesignationRequest" message="tns:findProductByDesignation"/>
+<output wsam:Action="http://API.webservice.aor.uc.pt/SOAP/findProductByDesignationResponse" message="tns:findProductByDesignationResponse"/>
 </operation>
 <operation name="removeSell">
 <input wsam:Action="http://API.webservice.aor.uc.pt/SOAP/removeSellRequest" message="tns:removeSell"/>
@@ -141,41 +129,26 @@
 <input wsam:Action="http://API.webservice.aor.uc.pt/SOAP/findProductByIdRequest" message="tns:findProductById"/>
 <output wsam:Action="http://API.webservice.aor.uc.pt/SOAP/findProductByIdResponse" message="tns:findProductByIdResponse"/>
 </operation>
-<operation name="findProductByDesignation">
-<input wsam:Action="http://API.webservice.aor.uc.pt/SOAP/findProductByDesignationRequest" message="tns:findProductByDesignation"/>
-<output wsam:Action="http://API.webservice.aor.uc.pt/SOAP/findProductByDesignationResponse" message="tns:findProductByDesignationResponse"/>
+<operation name="findAllCategory">
+<input wsam:Action="http://API.webservice.aor.uc.pt/SOAP/findAllCategoryRequest" message="tns:findAllCategory"/>
+<output wsam:Action="http://API.webservice.aor.uc.pt/SOAP/findAllCategoryResponse" message="tns:findAllCategoryResponse"/>
+</operation>
+<operation name="addProductSell">
+<input wsam:Action="http://API.webservice.aor.uc.pt/SOAP/addProductSellRequest" message="tns:addProductSell"/>
+<output wsam:Action="http://API.webservice.aor.uc.pt/SOAP/addProductSellResponse" message="tns:addProductSellResponse"/>
+</operation>
+<operation name="editProductSell">
+<input wsam:Action="http://API.webservice.aor.uc.pt/SOAP/editProductSellRequest" message="tns:editProductSell"/>
+<output wsam:Action="http://API.webservice.aor.uc.pt/SOAP/editProductSellResponse" message="tns:editProductSellResponse"/>
+</operation>
+<operation name="removeProductSell">
+<input wsam:Action="http://API.webservice.aor.uc.pt/SOAP/removeProductSellRequest" message="tns:removeProductSell"/>
+<output wsam:Action="http://API.webservice.aor.uc.pt/SOAP/removeProductSellResponse" message="tns:removeProductSellResponse"/>
 </operation>
 </portType>
 <binding name="SOAPPortBinding" type="tns:SOAP">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
-<operation name="findAllCategory">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="addProductSell">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="editProductSell">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="removeProductSell">
+<operation name="findProductByDesignation">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -265,7 +238,34 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="findProductByDesignation">
+<operation name="findAllCategory">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="addProductSell">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="editProductSell">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="removeProductSell">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>

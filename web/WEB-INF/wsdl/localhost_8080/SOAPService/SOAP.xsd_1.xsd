@@ -66,6 +66,18 @@
 
 <xs:element name="sellsByUserResponse" type="tns:sellsByUserResponse"/>
 
+<xs:complexType name="removeProductSell">
+<xs:sequence>
+<xs:element name="arg0" type="xs:long"/>
+<xs:element name="arg1" type="xs:long"/>
+<xs:element name="arg2" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="removeProductSellResponse">
+<xs:sequence/>
+</xs:complexType>
+
 <xs:complexType name="detailSell">
 <xs:sequence>
 <xs:element name="arg0" type="xs:long" minOccurs="0"/>
@@ -128,18 +140,6 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="removeProductSell">
-<xs:sequence>
-<xs:element name="arg0" type="xs:long"/>
-<xs:element name="arg1" type="xs:long"/>
-<xs:element name="arg2" type="xs:string" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="removeProductSellResponse">
-<xs:sequence/>
-</xs:complexType>
-
 <xs:complexType name="findAllProducts">
 <xs:sequence/>
 </xs:complexType>
@@ -147,6 +147,45 @@
 <xs:complexType name="findAllProductsResponse">
 <xs:sequence>
 <xs:element name="return" type="tns:product" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findProductByCategory">
+<xs:sequence>
+<xs:element name="arg0" type="xs:long" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findProductByCategoryResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:product" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="addProductSell">
+<xs:sequence>
+<xs:element name="arg0" type="xs:long"/>
+<xs:element name="arg1" type="xs:long"/>
+<xs:element name="arg2" type="xs:string" minOccurs="0"/>
+<xs:element name="arg3" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="addProductSellResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="findProductByDesignation">
+<xs:sequence>
+<xs:element name="arg0" type="xs:string" minOccurs="0"/>
+<xs:element name="arg1" type="xs:string" minOccurs="0"/>
+<xs:element name="arg2" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="findProductByDesignationResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:product" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -183,18 +222,6 @@
 <xs:complexType name="sellsByUserResponse">
 <xs:sequence>
 <xs:element name="return" type="tns:sell" minOccurs="0" maxOccurs="unbounded"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="findProductByCategory">
-<xs:sequence>
-<xs:element name="arg0" type="xs:long" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="findProductByCategoryResponse">
-<xs:sequence>
-<xs:element name="return" type="tns:product" minOccurs="0" maxOccurs="unbounded"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -235,19 +262,6 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="addProductSell">
-<xs:sequence>
-<xs:element name="arg0" type="xs:long"/>
-<xs:element name="arg1" type="xs:long"/>
-<xs:element name="arg2" type="xs:string" minOccurs="0"/>
-<xs:element name="arg3" type="xs:int"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="addProductSellResponse">
-<xs:sequence/>
-</xs:complexType>
-
 <xs:complexType name="findAllCategory">
 <xs:sequence/>
 </xs:complexType>
@@ -280,19 +294,5 @@
 
 <xs:complexType name="editProductSellResponse">
 <xs:sequence/>
-</xs:complexType>
-
-<xs:complexType name="findProductByDesignation">
-<xs:sequence>
-<xs:element name="arg0" type="xs:string" minOccurs="0"/>
-<xs:element name="arg1" type="xs:string" minOccurs="0"/>
-<xs:element name="arg2" type="xs:string" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="findProductByDesignationResponse">
-<xs:sequence>
-<xs:element name="return" type="tns:product" minOccurs="0"/>
-</xs:sequence>
 </xs:complexType>
 </xs:schema>
