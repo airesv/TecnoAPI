@@ -39,7 +39,16 @@ public class SessaoController implements Serializable {
                 pro.setQtyBuy(product.getQtyBuy() + 1);
             }
         }
-        
+
+    }
+
+    public void decrementa(Product product) {
+        for (Product pro : encomenda) {
+            if (pro.equals(product)) {
+                pro.setQtyBuy(product.getQtyBuy() - 1);
+            }
+        }
+
     }
 
     public void changeWS() {
