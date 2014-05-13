@@ -4,7 +4,6 @@
  *
  *  Vitor Aires
  */
-
 package objetEntities;
 
 /**
@@ -13,25 +12,22 @@ package objetEntities;
  */
 public class Category {
 
-    private int idCategory;
+    private Long idCategory;
     private String category;
 
-    public Category(int idCategory, String category) {
+    public Category() {
+    }
+
+    public Category(Long idCategory, String category) {
         this.idCategory = idCategory;
         this.category = category;
     }
 
-    /**
-     * @return the idCategory
-     */
-    public int getIdCategory() {
+    public Long getIdCategory() {
         return idCategory;
     }
 
-    /**
-     * @param idCategory the idCategory to set
-     */
-    public void setIdCategory(int idCategory) {
+    public void setIdCategory(Long idCategory) {
         this.idCategory = idCategory;
     }
 

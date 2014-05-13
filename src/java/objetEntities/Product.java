@@ -4,7 +4,6 @@
  *
  *  Vitor Aires
  */
-
 package objetEntities;
 
 import java.util.Date;
@@ -15,7 +14,7 @@ import java.util.Date;
  */
 public class Product {
 
-    private int idProduct;
+    private Long idProduct;
     private String brand;
     private String description;
     private String model;
@@ -23,13 +22,13 @@ public class Product {
     private Integer quantity;
     private Date repositiondate;
     private String version;
-    private int idCategory;
+    private Long idCategory;
     private int qtyBuy;
 
     public Product() {
     }
 
-    public Product(int idProduct, String brand, String description, String model, Double price, Integer quantity, Date repositiondate, String version, int idCategory) {
+    public Product(Long idProduct, String brand, String description, String model, Double price, Integer quantity, Date repositiondate, String version, Long idCategory) {
         this.idProduct = idProduct;
         this.brand = brand;
         this.description = description;
@@ -40,20 +39,6 @@ public class Product {
         this.version = version;
         this.idCategory = idCategory;
         this.qtyBuy = 0;
-    }
-
-    /**
-     * @return the idProduct
-     */
-    public int getIdProduct() {
-        return idProduct;
-    }
-
-    /**
-     * @param idProduct the idProduct to set
-     */
-    public void setIdProduct(int idProduct) {
-        this.idProduct = idProduct;
     }
 
     /**
@@ -154,19 +139,6 @@ public class Product {
         this.version = version;
     }
 
-    /**
-     * @return the idCategory
-     */
-    public int getIdCategory() {
-        return idCategory;
-    }
-
-    /**
-     * @param idCategory the idCategory to set
-     */
-    public void setIdCategory(int idCategory) {
-        this.idCategory = idCategory;
-    }
 
     /**
      * @return the qtyBuy
@@ -180,6 +152,22 @@ public class Product {
      */
     public void setQtyBuy(int qtyBuy) {
         this.qtyBuy = qtyBuy;
+    }
+
+    public Long getIdProduct() {
+        return idProduct;
+    }
+
+    public void setIdProduct(Long idProduct) {
+        this.idProduct = idProduct;
+    }
+
+    public Long getIdCategory() {
+        return idCategory;
+    }
+
+    public void setIdCategory(Long idCategory) {
+        this.idCategory = idCategory;
     }
 
 }
