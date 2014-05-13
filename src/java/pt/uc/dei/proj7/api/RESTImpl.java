@@ -23,7 +23,7 @@ public class RESTImpl implements APInterface {
 
     private Client client;
     private WebTarget webTarget;
-    private static final String BASE_URI = "http://localhost:8080/WebServiceAPI";
+    private static final String BASE_URI = "http://localhost:8080/WebServiceAPI/webresources";
 
     public RESTImpl() {
         client = ClientBuilder.newClient();
@@ -32,7 +32,7 @@ public class RESTImpl implements APInterface {
 
     //Métodos da entidade Product:
     public List<Product> findAllProducts() throws NoResultException {
-        WebTarget webTargetProduct = client.target(BASE_URI).path("product");
+        WebTarget webTargetProduct = webTarget.path("product");
         List<Product> result;
         result = webTargetProduct
                 .path("all")
