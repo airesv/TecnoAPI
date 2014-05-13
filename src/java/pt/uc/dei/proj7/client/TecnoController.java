@@ -60,11 +60,8 @@ public class TecnoController implements Serializable {
     }
 
     public void gerarProdutos() {
-        products = new ArrayList<>();
-        for (int i = 0; i < 12; i++) {
-            //  Product prod = new Product(0, "brand" + i, "descrip" + i, "i", i * 10.5, i, null, "1", i % 2);
-//            products.add(prod);
-        }
+//        APInterface api = sessao.getAPInterface();
+//        products = api.findAllProducts();
 
     }
 

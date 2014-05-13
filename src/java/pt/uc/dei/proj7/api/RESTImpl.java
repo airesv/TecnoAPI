@@ -60,7 +60,13 @@ public class RESTImpl implements APInterface {
     }
 
     public List<Category> findAllCategory() throws NoResultException {
-        return findAllCategory();
+        WebTarget webTargetCategory = webTarget.path("category");
+        List<Category> result;
+        result = webTargetCategory
+                .request(MediaType.APPLICATION_JSON)
+                .get(new GenericType<List<Category>>() {
+                });
+        return result;
     }
 
 //Métodos da entidade Sell:
