@@ -28,8 +28,6 @@ public class TecnoController implements Serializable {
     @Inject
     private SessaoController sessao;
 
-    private APInterface api;
-
     private List<Category> categories;
 
     private List<Product> products;
@@ -57,6 +55,7 @@ public class TecnoController implements Serializable {
     }
 
     public void gerarCategories() {
+        APInterface api = sessao.getAPInterface();
         if (sessao.getIsSoap().equals(true)) {
             categories = api.findAllCategory();
         } else {

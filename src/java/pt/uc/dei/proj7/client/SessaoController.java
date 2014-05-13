@@ -13,6 +13,9 @@ import java.util.List;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import objetEntities.Product;
+import pt.uc.dei.proj7.api.APInterface;
+import pt.uc.dei.proj7.api.REST;
+import pt.uc.dei.proj7.api.SOAP;
 
 /**
  *
@@ -34,6 +37,15 @@ public class SessaoController implements Serializable {
         encomenda = new ArrayList<>();
         sizeEncomenda = 0;
         apikey = "";
+        isSoap = true;
+    }
+
+    public APInterface getAPInterface() {
+        if (getIsSoap()) {
+            return new SOAP();
+        } else {
+            return new REST();
+        }
     }
 
     public void changeAPI() {

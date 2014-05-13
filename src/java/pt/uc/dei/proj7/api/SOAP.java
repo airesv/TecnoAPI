@@ -23,32 +23,38 @@ public class SOAP implements APInterface {
     public SOAP() {
     }
 
+    @Override
     public List<Product> findAllProducts() {
         pt.uc.aor.webservice.api.SOAPService service = new pt.uc.aor.webservice.api.SOAPService();
         pt.uc.aor.webservice.api.SOAP port = service.getSOAPPort();
         return ProductConverter.converterProductorList(port.findAllProducts());
     }
 
+    @Override
     public List<Product> findProductByCategory(java.lang.Long arg0) {
         pt.uc.aor.webservice.api.SOAP port = service.getSOAPPort();
         return ProductConverter.converterProductorList(port.findProductByCategory(arg0));
     }
 
+    @Override
     public Product findProductByDesignation(java.lang.String arg0, java.lang.String arg1, java.lang.String arg2) {
         pt.uc.aor.webservice.api.SOAP port = service.getSOAPPort();
         return ProductConverter.converterProduct(port.findProductByDesignation(arg0, arg1, arg2));
     }
 
+    @Override
     public Product findProductById(java.lang.Long arg0) {
         pt.uc.aor.webservice.api.SOAP port = service.getSOAPPort();
         return ProductConverter.converterProduct(port.findProductById(arg0));
     }
 
+    @Override
     public List<Product> searchByProduct(java.lang.String arg0, java.lang.String arg1) {
         pt.uc.aor.webservice.api.SOAP port = service.getSOAPPort();
         return ProductConverter.converterProductorList(port.searchByProduct(arg0, arg1));
     }
 
+    @Override
     public List<Category> findAllCategory() {
         pt.uc.aor.webservice.api.SOAP port = service.getSOAPPort();
         return CategoryConverter.converterCategoryList(port.findAllCategory());
