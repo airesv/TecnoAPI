@@ -42,5 +42,21 @@
         <delete dir="${build.generated.sources.dir}/jax-ws/pt/uc/aor/webservice/api"/>
         <delete dir="${build.generated.dir}/jax-wsCache/SOAP"/>
     </target>
-    <target name="wsimport-client-generate" depends="wsimport-client-SOAP"/>
+    <target name="wsimport-client-VitorSOAP" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/VitorSOAP"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/VitorSOAP" destdir="${build.generated.dir}/jax-wsCache/VitorSOAP" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/VitorSOAP/wsdl/localhost_8080/WebServiceAPI/VitorSOAP.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/WebServiceAPI/VitorSOAP?wsdl" xnocompile="true" xendorsed="true" package="pt.uc.dei.proj7.client">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/VitorSOAP/wsdl/localhost_8080/WebServiceAPI/VitorSOAP.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/VitorSOAP"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/VitorSOAP">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-VitorSOAP" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/pt/uc/dei/proj7/client"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/VitorSOAP"/>
+    </target>
+    <target name="wsimport-client-generate" depends="wsimport-client-SOAP, wsimport-client-VitorSOAP"/>
 </project>

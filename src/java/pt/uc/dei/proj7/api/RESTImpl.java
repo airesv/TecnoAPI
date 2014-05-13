@@ -6,7 +6,6 @@
 package pt.uc.dei.proj7.api;
 
 import java.util.List;
-import javax.annotation.PostConstruct;
 import javax.persistence.NoResultException;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
@@ -20,17 +19,13 @@ import objetEntities.Product;
  *
  * @author Elsa
  */
-public class REST implements APInterface {
+public class RESTImpl implements APInterface {
 
     private Client client;
     private WebTarget webTarget;
     private static final String BASE_URI = "http://localhost:8080/WebServiceAPI";
 
-    public REST() {
-    }
-
-    @PostConstruct
-    public void init() {
+    public RESTImpl() {
         client = ClientBuilder.newClient();
         webTarget = client.target(BASE_URI);
     }
@@ -44,6 +39,7 @@ public class REST implements APInterface {
                 .request(MediaType.APPLICATION_JSON)
                 .get(new GenericType<List<Product>>() {
                 });
+        client.close();
         return result;
     }
 

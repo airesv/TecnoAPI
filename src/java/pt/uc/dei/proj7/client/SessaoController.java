@@ -14,8 +14,8 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import objetEntities.Product;
 import pt.uc.dei.proj7.api.APInterface;
-import pt.uc.dei.proj7.api.REST;
-import pt.uc.dei.proj7.api.SOAP;
+import pt.uc.dei.proj7.api.RESTImpl;
+import pt.uc.dei.proj7.api.SOAPImpl;
 
 /**
  *
@@ -41,10 +41,10 @@ public class SessaoController implements Serializable {
     }
 
     public APInterface getAPInterface() {
-        if (getIsSoap()) {
-            return new SOAP();
+        if (isSoap) {
+            return new SOAPImpl();
         } else {
-            return new REST();
+            return new RESTImpl();
         }
     }
 

@@ -9,61 +9,57 @@ import java.util.List;
 import javax.xml.ws.WebServiceRef;
 import objetEntities.Category;
 import objetEntities.Product;
+import pt.uc.aor.webservice.api.SOAP;
 import pt.uc.aor.webservice.api.SOAPService;
 
 /**
  *
  * @author Elsa
  */
-public class SOAP implements APInterface {
+public class SOAPImpl implements APInterface {
 
     @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8080/SOAPService/SOAP.wsdl")
     private SOAPService service;
+    private SOAP port;
 
-    public SOAP() {
+    public SOAPImpl() {
+        service = new SOAPService();
+        port = service.getSOAPPort();
     }
 
     @Override
     public List<Product> findAllProducts() {
-        pt.uc.aor.webservice.api.SOAPService service = new pt.uc.aor.webservice.api.SOAPService();
-        pt.uc.aor.webservice.api.SOAP port = service.getSOAPPort();
         return ProductConverter.converterProductorList(port.findAllProducts());
     }
 
     @Override
     public List<Product> findProductByCategory(java.lang.Long arg0) {
-        pt.uc.aor.webservice.api.SOAP port = service.getSOAPPort();
         return ProductConverter.converterProductorList(port.findProductByCategory(arg0));
     }
 
     @Override
     public Product findProductByDesignation(java.lang.String arg0, java.lang.String arg1, java.lang.String arg2) {
-        pt.uc.aor.webservice.api.SOAP port = service.getSOAPPort();
         return ProductConverter.converterProduct(port.findProductByDesignation(arg0, arg1, arg2));
     }
 
     @Override
     public Product findProductById(java.lang.Long arg0) {
-        pt.uc.aor.webservice.api.SOAP port = service.getSOAPPort();
         return ProductConverter.converterProduct(port.findProductById(arg0));
     }
 
     @Override
     public List<Product> searchByProduct(java.lang.String arg0, java.lang.String arg1) {
-        pt.uc.aor.webservice.api.SOAP port = service.getSOAPPort();
         return ProductConverter.converterProductorList(port.searchByProduct(arg0, arg1));
     }
 
     @Override
     public List<Category> findAllCategory() {
-        pt.uc.aor.webservice.api.SOAP port = service.getSOAPPort();
         return CategoryConverter.converterCategoryList(port.findAllCategory());
     }
 
     public void addProductSell(long arg0, long arg1, java.lang.String arg2, int arg3) {
         // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
         // If the calling of port operations may lead to race condition some synchronization is required.
-        pt.uc.aor.webservice.api.SOAP port = service.getSOAPPort();
         port.addProductSell(arg0, arg1, arg2, arg3);
     }
 
