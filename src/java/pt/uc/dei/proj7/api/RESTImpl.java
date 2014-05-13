@@ -49,6 +49,7 @@ public class RESTImpl implements APInterface {
         List<Product> result;
         result = webTargetProduct
                 .path(java.text.MessageFormat.format("category/{0}", new Object[]{idCategory}))
+                .queryParam("idCategory", idCategory)
                 .request(javax.ws.rs.core.MediaType.APPLICATION_JSON)
                 .get(new GenericType<List<Product>>() {
                 });
@@ -61,6 +62,8 @@ public class RESTImpl implements APInterface {
         List<Product> result;
         result = webTargetProduct
                 .path(java.text.MessageFormat.format("search/{0}/{1}", new Object[]{column, word}))
+                .queryParam("column", column)
+                .queryParam("word", word)
                 .request(javax.ws.rs.core.MediaType.APPLICATION_JSON)
                 .get(new GenericType<List<Product>>() {
                 });
@@ -69,11 +72,29 @@ public class RESTImpl implements APInterface {
     }
 
     public Product findProductById(Long id) throws NoResultException {
-        return findProductById(id);
+        WebTarget webTargetProduct = webTarget.path("product");
+        Product result;
+        result = webTargetProduct
+                .path(java.text.MessageFormat.format("{0}", new Object[]{id}))
+                .queryParam("id", id)
+                .request(javax.ws.rs.core.MediaType.APPLICATION_JSON)
+                .get(Product.class);
+        client.close();
+        return result;
     }
 
     public Product findProductByDesignation(String brand, String model, String version) throws NoResultException {
-        return findProductByDesignation(brand, model, version);
+        WebTarget webTargetProduct = webTarget.path("product");
+        Product result;
+        result = webTargetProduct
+                .path(java.text.MessageFormat.format("findDesignation/{0}/{1}/{2}", new Object[]{brand, model, version}))
+                .queryParam("brand", brand)
+                .queryParam("model", model)
+                .queryParam("version", version)
+                .request(javax.ws.rs.core.MediaType.APPLICATION_JSON)
+                .get(Product.class);
+        client.close();
+        return result;
     }
 
     public List<Category> findAllCategory() throws NoResultException {
