@@ -15,7 +15,6 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import objetEntities.Category;
 import objetEntities.Product;
-import pt.uc.dei.proj7.api.APInterface;
 
 /**
  *
@@ -55,12 +54,13 @@ public class TecnoController implements Serializable {
     }
 
     public void gerarCategories() {
-        APInterface api = sessao.getAPInterface();
-        if (sessao.getIsSoap().equals(true)) {
-            categories = api.findAllCategory();
-        } else {
-            categories = api.findAllCategory();
-        }
+//        APInterface api = sessao.getAPInterface();
+//        if (sessao.getIsSoap().equals(true)) {
+//            categories = api.findAllCategory();
+//        } else {
+//            categories = api.findAllCategory();
+//        }
+
     }
 
     public void gerarProdutos() {
