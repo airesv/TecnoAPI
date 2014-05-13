@@ -8,10 +8,18 @@
     <body>
         <ui:composition>
             <div class="panel panel-default">
-                <div class="panel-heading">Encomenda Atual</div>
+                <div class="panel-heading">Encomenda</div>
 
 
                 <h:dataTable class="table table-bordered table-hover" value="#{sessaoController.encomenda}" var="item">
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Remover"/>
+                        </f:facet>
+                        <h:commandLink  class="glyphicon glyphicon-minus-sign" action="#{sessaoController.remove(item)}"/>
+                    </h:column>
+
+
                     <h:column>
                         <f:facet name="header">
                             <h:outputText value="Marca"/>
@@ -30,7 +38,13 @@
                         <f:facet name="header">
                             <h:outputText value="Qtd"/>
                         </f:facet>
-                        <h:commandLink  value="#{item.quantity}"/>
+                        <h:commandLink  value="#{item.qtyBuy}"/>
+                        <h:commandLink  class="glyphicon glyphicon-info-sign" action="#{sessaoController.incrementa(item)}"/>
+                        <f:facet name="footer">
+                            Total
+                        </f:facet>
+
+
                     </h:column>
 
                     <h:column>
@@ -38,12 +52,9 @@
                             <h:outputText value="Preco"/>
                         </f:facet>
                         <h:commandLink  value="#{item.price}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="Remover"/>
+                        <f:facet name="footer">
+                            <h:outputLabel value="#{sessaoController.total}"/>
                         </f:facet>
-                        <h:commandLink  class="glyphicon glyphicon-minus-sign" value="#{sessaoController.remove(item)}"/>
                     </h:column>
                 </h:dataTable>
             </div>

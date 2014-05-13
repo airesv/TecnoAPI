@@ -1,3 +1,5 @@
+package pt.uc.dei.proj7.client;
+
 
 /*
  * Acerta o Rumo, edicao 2013/14
@@ -9,6 +11,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 import objetEntities.Category;
 import objetEntities.Product;
@@ -21,11 +24,15 @@ import objetEntities.Product;
 @RequestScoped
 public class TecnoController implements Serializable {
 
+    @Inject
+    private SessaoController sessao;
+
     private List<Category> categories;
 
     private List<Product> products;
 
     private List<Product> encomenda;
+
     private String name;
 
     public void clear(Product prod) {
@@ -35,6 +42,7 @@ public class TecnoController implements Serializable {
 
     public void gerarInfo(Product prod) {
         setName(prod.getBrand());
+
     }
 
     public void gerarCategories() {

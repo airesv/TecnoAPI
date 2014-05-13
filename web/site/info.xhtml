@@ -7,20 +7,21 @@
     <body>
         <ui:composition>
 
-            <h:form>
-                <div class="panel panel-default">
-                    <div class="panel-heading">Informacao do Produto</div>
-                    <h:panelGrid columns="2">
-                        <h:outputLabel class="" value="Nome"/>
-                        <h:outputLabel value="Nome"/>
 
-
+            <div class="panel panel-default">
+                <div class="panel-heading">Informacao do Produto</div>
+                <h:form>
+                    <h:panelGrid columns="2" >
+                        <h4>  <h:outputLabel class="text-left"  value="Nome:  "/></h4>
+                        <h:outputLabel class="text-right"  value="#{tecnoController.name}"/>
+                        <h4>  <h:outputLabel class="text-left"  value="Qtd  "/></h4>
+                        <h:inputText class="text-right"  value="#{tecnoController.quatidadeBuy}"/>
 
 
                     </h:panelGrid>
+                </h:form>
+            </div>
 
-                </div>
-            </h:form>
         </ui:composition>
     </body>
 </html>

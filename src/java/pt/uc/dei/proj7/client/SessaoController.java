@@ -1,3 +1,5 @@
+package pt.uc.dei.proj7.client;
+
 
 /*
  * Acerta o Rumo, edicao 2013/14
@@ -23,6 +25,7 @@ public class SessaoController implements Serializable {
     private List<Product> encomenda;
     private Boolean isSoap;
     private int sizeEncomenda;
+    private double total;
 
     public SessaoController() {
         encomenda = new ArrayList<>();
@@ -30,9 +33,27 @@ public class SessaoController implements Serializable {
         sizeEncomenda = 0;
     }
 
+    public void incrementa(Product product) {
+        for (Product pro : encomenda) {
+            if (pro.equals(product)) {
+                pro.setQtyBuy(product.getQtyBuy() + 1);
+            }
+        }
+        
+    }
+
     public void changeWS() {
         setIsSoap(!isSoap);
         System.out.println("--->" + isSoap);
+    }
+
+    public void caltotal() {
+        double value = 0;
+        for (Product product : encomenda) {
+            value += product.getQuantity() * product.getPrice();
+        }
+
+        setTotal(value);
     }
 
     public void insert(Product prod) {
@@ -86,6 +107,21 @@ public class SessaoController implements Serializable {
      */
     public void setSizeEncomenda(int sizeEncomenda) {
         this.sizeEncomenda = sizeEncomenda;
+    }
+
+    /**
+     * @return the total
+     */
+    public double getTotal() {
+        caltotal();
+        return total;
+    }
+
+    /**
+     * @param total the total to set
+     */
+    public void setTotal(double total) {
+        this.total = total;
     }
 
 }

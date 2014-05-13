@@ -8,6 +8,7 @@
 package objetEntities;
 
 import java.util.Date;
+import org.primefaces.event.CellEditEvent;
 
 /**
  *
@@ -24,6 +25,10 @@ public class Product {
     private Date repositiondate;
     private String version;
     private int idCategory;
+    private int qtyBuy;
+
+    public Product() {
+    }
 
     public Product(int idProduct, String brand, String description, String model, Double price, Integer quantity, Date repositiondate, String version, int idCategory) {
         this.idProduct = idProduct;
@@ -35,6 +40,13 @@ public class Product {
         this.repositiondate = repositiondate;
         this.version = version;
         this.idCategory = idCategory;
+        this.qtyBuy = 0;
+    }
+
+    public void onCellEdit(CellEditEvent event) {
+        Object oldValue = event.getOldValue();
+        Object newValue = event.getNewValue();
+
     }
 
     /**
@@ -161,6 +173,20 @@ public class Product {
      */
     public void setIdCategory(int idCategory) {
         this.idCategory = idCategory;
+    }
+
+    /**
+     * @return the qtyBuy
+     */
+    public int getQtyBuy() {
+        return qtyBuy;
+    }
+
+    /**
+     * @param qtyBuy the qtyBuy to set
+     */
+    public void setQtyBuy(int qtyBuy) {
+        this.qtyBuy = qtyBuy;
     }
 
 }

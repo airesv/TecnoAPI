@@ -14,7 +14,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Produtos disponiveis</div>
 
-                <h:dataTable class="table table-bordered table-hover" value="#{tecnoController.products}" var="item">
+                <h:dataTable id="tabela" class="table table-bordered table-hover" value="#{tecnoController.products}" var="item">
 
                     <h:column>
                         <f:facet name="header">
@@ -41,14 +41,14 @@
                         <f:facet name="header">
                             <h:outputText value="Preco"/>
                         </f:facet>
-                        <h:commandLink  value="#{item.price}" onclick="if (!confirm('Encomendar?'))
-                                    return false" action="#{sessaoController.insert(item)}"/>
+                        <h:commandLink  value="#{item.price}"  action="#{tecnoController.gerarInfo(item)}"/>
                     </h:column>
                     <h:column>
                         <f:facet name="header">
                             <h:outputText value="Qtd"/>
                         </f:facet>
-                        <h:inputText value="#{item.quantity}" size="1"/>
+                        <h:inputText value="#{item.qtyBuy}" size="1"/>
+                        <h:commandLink  class="glyphicon glyphicon-upload" action="#{tecnoController.incrementa(item)}"/>
                         <h:commandLink  class="glyphicon glyphicon-plus-sign" onclick="if (!confirm('Encomendar?'))
                                     return false" action="#{sessaoController.insert(item)}"/>
                     </h:column>
@@ -57,8 +57,8 @@
                             <h:outputText value="info"/>
                         </f:facet>
 
-                        <h:commandLink  class="glyphicon glyphicon-info-sign"  onclick="$('#myModal').modal('show');">
-                            <f:ajax event="click" listener="#{tecnoController.gerarInfo(item)}" render="dialogo"/>
+                        <h:commandLink  class="glyphicon glyphicon-info-sign" action="#{tecnoController.gerarInfo(item)}" onclick="$('#myModal').modal('show');">
+                            <f:ajax event="click" listener="#{tecnoController.gerarCategories()}" render="dialogo"/>
                         </h:commandLink>
                         <h:form id="dialogo">
 
