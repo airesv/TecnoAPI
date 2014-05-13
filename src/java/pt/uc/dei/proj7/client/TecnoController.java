@@ -37,7 +37,6 @@ public class TecnoController implements Serializable {
 
     public void clear(Product prod) {
         encomenda.add(prod);
-
     }
 
     public void gerarInfo(Product prod) {

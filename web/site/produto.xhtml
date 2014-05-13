@@ -48,7 +48,7 @@
                             <h:outputText value="Qtd"/>
                         </f:facet>
                         <h:inputText value="#{item.qtyBuy}" size="1"/>
-                        <h:commandLink  class="glyphicon glyphicon-upload" action="#{tecnoController.incrementa(item)}"/>
+                        <h:commandLink   action="#{tecnoController.incrementa(item)}"/>
                         <h:commandLink  class="glyphicon glyphicon-plus-sign" onclick="if (!confirm('Encomendar?'))
                                     return false" action="#{sessaoController.insert(item)}"/>
                     </h:column>
@@ -57,30 +57,8 @@
                             <h:outputText value="info"/>
                         </f:facet>
 
-                        <h:commandLink  class="glyphicon glyphicon-info-sign" action="#{tecnoController.gerarInfo(item)}" onclick="$('#myModal').modal('show');">
-                            <f:ajax event="click" listener="#{tecnoController.gerarCategories()}" render="dialogo"/>
+                        <h:commandLink  class="glyphicon glyphicon-info-sign" action="#{tecnoController.gerarInfo(item)}">
                         </h:commandLink>
-                        <h:form id="dialogo">
-
-                            <!-- Modal -->
-                            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                            <h4 class="modal-title"><h:outputText value="#{tecnoController.name}"/></h4>
-                                        </div>
-                                        <div class="modal-body">
-                                            // AQUI TENHO OS CAMPOS DO FORM
-                                        </div>
-                                        <div class="modal-footer">
-                                            // AQUI TENHO OS BOTÕES DO FORM
-                                        </div>
-                                    </div><!-- /.modal-content -->
-                                </div><!-- /.modal-dialog -->
-                            </div><!-- /.modal -->
-                        </h:form>
-
 
                     </h:column>
 
