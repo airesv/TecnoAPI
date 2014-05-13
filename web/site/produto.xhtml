@@ -43,20 +43,13 @@
                         </f:facet>
                         <h:commandLink  value="#{item.price}"  action="#{tecnoController.gerarInfo(item)}"/>
                     </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="Qtd"/>
-                        </f:facet>
-                        <h:inputText value="#{item.qtyBuy}" size="1"/>
-                        <h:commandLink   action="#{tecnoController.incrementa(item)}"/>
-                        <h:commandLink  class="glyphicon glyphicon-plus-sign" onclick="if (!confirm('Encomendar?'))
-                                    return false" action="#{sessaoController.insert(item)}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="info"/>
-                        </f:facet>
 
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Encomendar/Info"/>
+                        </f:facet>
+                        <h:commandLink  class="glyphicon glyphicon-plus-sign" onclick="if (!confirm('Encomendar #{item.brand}?'))
+                                    return false" action="#{sessaoController.insert(item)}"/>
                         <h:commandLink  class="glyphicon glyphicon-info-sign" action="#{tecnoController.gerarInfo(item)}">
                         </h:commandLink>
 

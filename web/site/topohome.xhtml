@@ -22,14 +22,11 @@
 
 
 
+
                     <ul class="nav navbar-nav navbar-right">
                         <li><span class="glyphicon glyphicon-shopping-cart"></span></li>
                         <li><h:link  outcome="index" value="#{sessaoController.sizeEncomenda} Produtos" /></li>
-                        <li>
-                            <h:selectOneRadio class="nav navbar-nav"  value="#{sessaoController.changeWS()}">
-                                <f:selectItem itemValue="True" itemLabel="Soap" />
-                                <f:selectItem itemValue="False" itemLabel="Rest" />
-                            </h:selectOneRadio></li>
+
                     </ul>
                 </div>
             </nav>

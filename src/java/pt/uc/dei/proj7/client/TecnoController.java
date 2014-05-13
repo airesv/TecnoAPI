@@ -33,14 +33,23 @@ public class TecnoController implements Serializable {
 
     private List<Product> encomenda;
 
-    private String name;
+    private String brand;
+    private String description;
+    private String model;
+    private Double price;
+    private Integer quantity;
+    private String version;
 
     public void clear(Product prod) {
         encomenda.add(prod);
     }
 
     public void gerarInfo(Product prod) {
-        setName(prod.getBrand());
+        setBrand(prod.getBrand());
+        setModel(prod.getModel());
+        setVersion(prod.getVersion());
+        setDescription(prod.getDescription());
+        setPrice(prod.getPrice());
 
     }
 
@@ -116,17 +125,73 @@ public class TecnoController implements Serializable {
     }
 
     /**
-     * @return the name
+     * @return the brand
      */
-    public String getName() {
-        return name;
+    public String getBrand() {
+        return brand;
     }
 
     /**
-     * @param name the name to set
+     * @param brand the brand to set
      */
-    public void setName(String name) {
-        this.name = name;
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    /**
+     * @return the description
+     */
+    public String getDescription() {
+        return description;
+    }
+
+    /**
+     * @param description the description to set
+     */
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    /**
+     * @return the model
+     */
+    public String getModel() {
+        return model;
+    }
+
+    /**
+     * @param model the model to set
+     */
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    /**
+     * @return the price
+     */
+    public Double getPrice() {
+        return price;
+    }
+
+    /**
+     * @param price the price to set
+     */
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    /**
+     * @return the version
+     */
+    public String getVersion() {
+        return version;
+    }
+
+    /**
+     * @param version the version to set
+     */
+    public void setVersion(String version) {
+        this.version = version;
     }
 
 }

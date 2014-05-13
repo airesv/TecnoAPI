@@ -24,13 +24,20 @@ public class SessaoController implements Serializable {
 
     private List<Product> encomenda;
     private Boolean isSoap;
+
     private int sizeEncomenda;
     private double total;
 
+    private String apikey;
+
     public SessaoController() {
         encomenda = new ArrayList<>();
-        isSoap = true;
         sizeEncomenda = 0;
+        apikey = "";
+    }
+
+    public void changeAPI() {
+        setApikey(getApikey());
     }
 
     public void incrementa(Product product) {
@@ -42,6 +49,10 @@ public class SessaoController implements Serializable {
 
     }
 
+    public String subtotal(Product product) {
+        return "" + product.getPrice() * product.getQtyBuy();
+    }
+
     public void decrementa(Product product) {
         for (Product pro : encomenda) {
             if (pro.equals(product)) {
@@ -51,17 +62,11 @@ public class SessaoController implements Serializable {
 
     }
 
-    public void changeWS() {
-        setIsSoap(!isSoap);
-        System.out.println("--->" + isSoap);
-    }
-
     public void caltotal() {
         double value = 0;
         for (Product product : encomenda) {
-            value += product.getQuantity() * product.getPrice();
+            value += product.getQtyBuy() * product.getPrice();
         }
-
         setTotal(value);
     }
 
@@ -131,6 +136,20 @@ public class SessaoController implements Serializable {
      */
     public void setTotal(double total) {
         this.total = total;
+    }
+
+    /**
+     * @return the apikey
+     */
+    public String getApikey() {
+        return apikey;
+    }
+
+    /**
+     * @param apikey the apikey to set
+     */
+    public void setApikey(String apikey) {
+        this.apikey = apikey;
     }
 
 }

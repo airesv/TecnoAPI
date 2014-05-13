@@ -10,16 +10,22 @@
 
             <div class="panel panel-default">
                 <div class="panel-heading">Informacao do Produto</div>
-                <h:form>
-                    <h:panelGrid columns="2" >
-                        <h4>  <h:outputLabel class="text-left"  value="Nome:  "/></h4>
-                        <h:outputLabel class="text-right"  value="#{tecnoController.name}"/>
-                        <h4>  <h:outputLabel class="text-left"  value="Qtd  "/></h4>
-
-
-
-                    </h:panelGrid>
-                </h:form>
+                <div class="panel-body">
+                    <h:form>
+                        <h:panelGrid columns="2" >
+                            <h:outputLabel  value="Marca:  "/>
+                            <h:outputLabel  value="#{tecnoController.brand}"/>
+                            <h:outputLabel  value="Modelo:  "/>
+                            <h:outputLabel  value="#{tecnoController.model}"/>
+                            <h:outputLabel  value="Versão  "/>
+                            <h:outputLabel  value="#{tecnoController.version}"/>
+                            <h:outputLabel  value="Descrição:  "/>
+                            <h:outputLabel  value="#{tecnoController.description}"/>
+                            <h:outputLabel  value="Preço:  "/>
+                            <h:outputLabel  value="#{tecnoController.price}"/>
+                        </h:panelGrid>
+                    </h:form>
+                </div>
             </div>
 
         </ui:composition>

@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head />
+    <body>
+        <ui:composition>
+
+            <h:form>
+                <div class="panel panel-default">
+                    <div class="panel-heading">Gestão</div>
+                    <div class="panel-body">
+                        <h:form >
+                            <h:panelGrid class="form-group" columns="2">
+                                <h:inputText value="#{sessaoController.apikey}" size="2" />
+                                <h:commandButton  class="btn btn-default" action="#{sessaoController.changeAPI()}" value="Key"/>
+                            </h:panelGrid>
+                        </h:form>
+                    </div>
+                </div>
+            </h:form>
+            <h:form>
+                <div class="panel panel-default">
+                    <div class="panel-heading">SOAP/REST</div>
+                    <div class="panel-body">
+                        <h:form >
+                            <h:selectOneRadio class="nav navbar-nav"  value="#{sessaoController.isSoap}">
+                                <f:selectItem itemValue="true" itemLabel="Soap" />
+                                <f:selectItem itemValue="false" itemLabel="Rest" />
+                                <f:ajax  event="change"/>
+                            </h:selectOneRadio>
+                        </h:form>
+                    </div>
+                </div>
+            </h:form>
+
+
+
+        </ui:composition>
+    </body>
+</html>
+
