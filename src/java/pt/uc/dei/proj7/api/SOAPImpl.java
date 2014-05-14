@@ -5,10 +5,13 @@
  */
 package pt.uc.dei.proj7.api;
 
+import java.util.HashMap;
 import java.util.List;
 import javax.xml.ws.WebServiceRef;
 import objetEntities.Category;
 import objetEntities.Product;
+import objetEntities.Sell;
+import objetEntities.SellProduct;
 import pt.uc.aor.webservice.api.SOAP;
 import pt.uc.aor.webservice.api.SOAPService;
 
@@ -58,7 +61,6 @@ public class SOAPImpl implements APInterface {
         return ProductConverter.converterProduct(port.findProductById(arg0));
     }
 
-    @Override
     public List<Product> searchByProduct(java.lang.String arg0, java.lang.String arg1) {
         return ProductConverter.converterProductorList(port.searchByProduct(arg0, arg1));
     }
@@ -72,12 +74,12 @@ public class SOAPImpl implements APInterface {
         port.addProductSell(arg0, arg1, arg2, arg3);
     }
 
-    public java.util.List<pt.uc.aor.webservice.api.SellProduct> detailBySell(java.lang.Long arg0) {
-        return port.detailBySell(arg0);
+    public List<SellProduct> detailBySell(java.lang.Long arg0) {
+        return SellProductConverter.converterSellProductList(port.detailBySell(arg0));
     }
 
-    public java.util.List<pt.uc.aor.webservice.api.SellProduct> detailSell(java.lang.Long arg0) {
-        return port.detailSell(arg0);
+    public List<SellProduct> detailSell(java.lang.Long arg0) {
+        return SellProductConverter.converterSellProductList(port.detailSell(arg0));
     }
 
     public void editProductSell(long arg0, long arg1, java.lang.String arg2, int arg3) {
@@ -96,8 +98,12 @@ public class SOAPImpl implements APInterface {
         port.removeSell(arg0, arg1);
     }
 
-    public java.util.List<pt.uc.aor.webservice.api.Sell> sellsByUser(java.lang.Long arg0) {
-        return port.sellsByUser(arg0);
+    public List<Sell> sellsByUser(java.lang.Long arg0) {
+        return SellConverter.converterSellList(port.sellsByUser(arg0));
     }
 
+    @Override
+    public void makeSell(HashMap<Integer, Integer> hashmap, String apkKey) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

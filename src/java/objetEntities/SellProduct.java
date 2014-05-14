@@ -13,8 +13,8 @@ public class SellProduct {
 
     private Long idSellProduct;
     private Integer quantity;
-    private Sell sell;
-    private Product product;
+    private Long sell;
+    private Long product;
 
     public SellProduct() {
     }
@@ -35,19 +35,19 @@ public class SellProduct {
         this.quantity = quantity;
     }
 
-    public Sell getSell() {
+    public Long getSell() {
         return sell;
     }
 
-    public void setSell(Sell sell) {
+    public void setSell(Long sell) {
         this.sell = sell;
     }
 
-    public Product getProduct() {
+    public Long getProduct() {
         return product;
     }
 
-    public void setProduct(Product product) {
+    public void setProduct(Long product) {
         this.product = product;
     }
 

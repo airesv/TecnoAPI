@@ -5,6 +5,7 @@
  */
 package pt.uc.dei.proj7.api;
 
+import java.util.HashMap;
 import java.util.List;
 import javax.persistence.NoResultException;
 import javax.ws.rs.ClientErrorException;
@@ -15,6 +16,7 @@ import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.MediaType;
 import objetEntities.Category;
 import objetEntities.Product;
+import objetEntities.Sell;
 import objetEntities.SellProduct;
 
 /**
@@ -37,8 +39,20 @@ public class RESTImpl implements APInterface {
         WebTarget webTargetProduct = webTarget.path("product");
         List<Product> result;
         result = webTargetProduct
-                .path("all")
                 .request(MediaType.APPLICATION_JSON)
+                .get(new GenericType<List<Product>>() {
+                });
+        client.close();
+        return result;
+    }
+
+    public List<Product> findAllProductsREST(String column, String word) throws NoResultException, ClientErrorException {
+        WebTarget webTargetProduct = webTarget.path("product");
+        List<Product> result;
+        result = webTargetProduct
+                .request(MediaType.APPLICATION_JSON)
+                .header("column", column)
+                .header("word", word)
                 .get(new GenericType<List<Product>>() {
                 });
         client.close();
@@ -49,20 +63,9 @@ public class RESTImpl implements APInterface {
         WebTarget webTargetProduct = webTarget.path("product");
         List<Product> result;
         result = webTargetProduct
-                .path(java.text.MessageFormat.format("category/{0}", new Object[]{idCategory}))
+                //                .path(java.text.MessageFormat.format("category/{0}", new Object[]{idCategory}))
                 .request(javax.ws.rs.core.MediaType.APPLICATION_JSON)
-                .get(new GenericType<List<Product>>() {
-                });
-        client.close();
-        return result;
-    }
-
-    public List<Product> searchByProduct(String column, String word) throws NoResultException, ClientErrorException {
-        WebTarget webTargetProduct = webTarget.path("product");
-        List<Product> result;
-        result = webTargetProduct
-                .path(java.text.MessageFormat.format("search/{0}/{1}", new Object[]{column, word}))
-                .request(javax.ws.rs.core.MediaType.APPLICATION_JSON)
+                .header("idCategory", idCategory)
                 .get(new GenericType<List<Product>>() {
                 });
         client.close();
@@ -74,17 +77,6 @@ public class RESTImpl implements APInterface {
         Product result;
         result = webTargetProduct
                 .path(java.text.MessageFormat.format("{0}", new Object[]{id}))
-                .request(javax.ws.rs.core.MediaType.APPLICATION_JSON)
-                .get(Product.class);
-        client.close();
-        return result;
-    }
-
-    public Product findProductByDesignation(String brand, String model, String version) throws NoResultException, ClientErrorException {
-        WebTarget webTargetProduct = webTarget.path("product");
-        Product result;
-        result = webTargetProduct
-                .path(java.text.MessageFormat.format("findDesignation/{0}/{1}/{2}", new Object[]{brand, model, version}))
                 .request(javax.ws.rs.core.MediaType.APPLICATION_JSON)
                 .get(Product.class);
         client.close();
@@ -149,5 +141,35 @@ public class RESTImpl implements APInterface {
                 });
         client.close();
         return result;
+    }
+
+    @Override
+    public void makeSell(HashMap<Integer, Integer> hashmap, String apkKey) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void removeSell(long id, String apkKey) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Sell> sellsByUser(Long idUser) throws NoResultException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<SellProduct> detailBySell(Long idSell) throws NoResultException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<SellProduct> detailSell(Long idSell) throws NoResultException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Product findProductByDesignation(String brand, String model, String version) throws NoResultException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
