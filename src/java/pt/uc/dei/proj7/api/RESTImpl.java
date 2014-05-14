@@ -15,6 +15,7 @@ import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.MediaType;
 import objetEntities.Category;
 import objetEntities.Product;
+import objetEntities.SellProduct;
 
 /**
  *
@@ -32,7 +33,7 @@ public class RESTImpl implements APInterface {
     }
 
     //Métodos da entidade Product:
-    public List<Product> findAllProducts() throws NoResultException {
+    public List<Product> findAllProducts() throws NoResultException, ClientErrorException {
         WebTarget webTargetProduct = webTarget.path("product");
         List<Product> result;
         result = webTargetProduct
@@ -49,7 +50,6 @@ public class RESTImpl implements APInterface {
         List<Product> result;
         result = webTargetProduct
                 .path(java.text.MessageFormat.format("category/{0}", new Object[]{idCategory}))
-                .queryParam("idCategory", idCategory)
                 .request(javax.ws.rs.core.MediaType.APPLICATION_JSON)
                 .get(new GenericType<List<Product>>() {
                 });
@@ -57,13 +57,11 @@ public class RESTImpl implements APInterface {
         return result;
     }
 
-    public List<Product> searchByProduct(String column, String word) throws NoResultException {
+    public List<Product> searchByProduct(String column, String word) throws NoResultException, ClientErrorException {
         WebTarget webTargetProduct = webTarget.path("product");
         List<Product> result;
         result = webTargetProduct
                 .path(java.text.MessageFormat.format("search/{0}/{1}", new Object[]{column, word}))
-                .queryParam("column", column)
-                .queryParam("word", word)
                 .request(javax.ws.rs.core.MediaType.APPLICATION_JSON)
                 .get(new GenericType<List<Product>>() {
                 });
@@ -71,33 +69,29 @@ public class RESTImpl implements APInterface {
         return result;
     }
 
-    public Product findProductById(Long id) throws NoResultException {
+    public Product findProductById(Long id) throws NoResultException, ClientErrorException {
         WebTarget webTargetProduct = webTarget.path("product");
         Product result;
         result = webTargetProduct
                 .path(java.text.MessageFormat.format("{0}", new Object[]{id}))
-                .queryParam("id", id)
                 .request(javax.ws.rs.core.MediaType.APPLICATION_JSON)
                 .get(Product.class);
         client.close();
         return result;
     }
 
-    public Product findProductByDesignation(String brand, String model, String version) throws NoResultException {
+    public Product findProductByDesignation(String brand, String model, String version) throws NoResultException, ClientErrorException {
         WebTarget webTargetProduct = webTarget.path("product");
         Product result;
         result = webTargetProduct
                 .path(java.text.MessageFormat.format("findDesignation/{0}/{1}/{2}", new Object[]{brand, model, version}))
-                .queryParam("brand", brand)
-                .queryParam("model", model)
-                .queryParam("version", version)
                 .request(javax.ws.rs.core.MediaType.APPLICATION_JSON)
                 .get(Product.class);
         client.close();
         return result;
     }
 
-    public List<Category> findAllCategory() throws NoResultException {
+    public List<Category> findAllCategory() throws NoResultException, ClientErrorException {
         WebTarget webTargetCategory = webTarget.path("category");
         List<Category> result;
         result = webTargetCategory
@@ -109,36 +103,51 @@ public class RESTImpl implements APInterface {
     }
 
 //Métodos da entidade Sell:
-//    public void makeSell(HashMap<Integer, Integer> hashmap, String apkKey) {
-//        makeSell(hashmap, apkKey);
-//    }
-//
-//    public void removeSell(long id, String apkKey) {
-//        removeSell(id, apkKey);
-//    }
-//
-//    public List<Sell> sellsByUser(Long idUser) throws NoResultException {
-//        return sellsByUser(idUser);
-//    }
-//
-//    public List<SellProduct> detailBySell(Long idSell) throws NoResultException {
-//        return detailBySell(idSell);
-//    }
-//
-////Métodos da entidade SellProduct:
-//    public void addProductSell(long idProduct, long idSell, String apkKey, int quantity) {
-//        addProductSell(idProduct, idSell, apkKey, quantity);
-//    }
-//
-//    public void editProductSell(long idProduct, long idSell, String apkKey, int quantity) {
-//        editProductSell(idProduct, idSell, apkKey, quantity);
-//    }
-//
-//    public void removeProductSell(long idProduct, long idSell, String apkKey) {
-//        removeProductSell(idProduct, idSell, apkKey);
-//    }
-//
-//    public List<SellProduct> detailSell(Long idSell) throws NoResultException {
-//        return detailSell(idSell);
-//    }
+    public void createSell(Object requestEntity) throws ClientErrorException {
+//        webTarget.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).post(javax.ws.rs.client.Entity.entity(requestEntity, javax.ws.rs.core.MediaType.APPLICATION_JSON));
+    }
+
+    public void removeSell(String idSell) throws ClientErrorException {
+        webTarget.path("sell")
+                .path(java.text.MessageFormat.format("{0}", new Object[]{idSell}))
+                .request()
+                .delete();
+        client.close();
+    }
+
+    public <T> T sellsByUser(Class<T> responseType, String idUser) throws ClientErrorException {
+        WebTarget resource = webTarget;
+        resource = resource.path(java.text.MessageFormat.format("sellsUser/{0}", new Object[]{idUser}));
+        return resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get(responseType);
+    }
+
+    public <T> T detailBySell(Class<T> responseType, String idSell) throws ClientErrorException {
+        WebTarget resource = webTarget;
+        resource = resource.path(java.text.MessageFormat.format("{0}", new Object[]{idSell}));
+        return resource.request(javax.ws.rs.core.MediaType.APPLICATION_JSON).get(responseType);
+    }
+
+//Métodos da entidade SellProduct:
+    public void addProductSell(long idProduct, long idSell, String apkKey, int quantity) {
+        addProductSell(idProduct, idSell, apkKey, quantity);
+    }
+
+    public void editProductSell(long idProduct, long idSell, String apkKey, int quantity) {
+        editProductSell(idProduct, idSell, apkKey, quantity);
+    }
+
+    public void removeProductSell(long idProduct, long idSell, String apkKey) {
+        removeProductSell(idProduct, idSell, apkKey);
+    }
+
+    public List<SellProduct> detailSell(String idSell) throws NoResultException {
+        WebTarget webTargetSellProduct = webTarget.path("sellproduct");
+        List<SellProduct> result;
+        result = webTargetSellProduct
+                .request(MediaType.APPLICATION_JSON)
+                .get(new GenericType<List<SellProduct>>() {
+                });
+        client.close();
+        return result;
+    }
 }
